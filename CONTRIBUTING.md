@@ -11,7 +11,7 @@
 - Push sur la branche que vous avez créé (les tests sont effectués automatiquement avec Travis CI, vérifier sur Github qu'ils sont passés à 100%, si non corriger jusqu'à ce qu'ils passent).
 - Créer une pull request en décrivant votre nouvelle fonctionnalité/bug corrigé.
 
-*Penser à respecter l'architecture des fichiers de Symfony 5.4, le PSR ainsi que la qualité du code.
+*Penser à respecter l'architecture des fichiers de Symfony 5.4, les conventions de nommage Symfony, le PSR-12 ainsi que la qualité du code.
 Lors de votre développement, si vous modifiez ou créez une ou plusieurs entités, ne pas oublier de créer une migration avec :
 
 ```bash
