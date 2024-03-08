@@ -17,25 +17,23 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-
     private $id;
 
     /**
      * @ORM\Column(type="string", length=25, unique=true)
      * @Assert\NotBlank(message="Vous devez saisir un nom d'utilisateur.")
      */
-
     private $username;
 
     /**
      * @ORM\Column(type="string", length=64)
      */
-
     private $password;
 
     /**
@@ -43,19 +41,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @Assert\NotBlank(message="Vous devez saisir une adresse email.")
      * @Assert\Email(message="Le format de l'adresse n'est pas correcte.")
      */
-
     private $email;
 
     /**
      * @ORM\OneToMany(targetEntity=Task::class, mappedBy="user")
      */
-
     private $tasks;
 
     /**
      * @ORM\Column(type="json")
      */
-
     private $roles = [];
 
     /**

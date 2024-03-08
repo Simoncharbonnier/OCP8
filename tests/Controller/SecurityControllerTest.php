@@ -8,22 +8,20 @@ use App\Entity\User;
 
 class SecurityControllerTest extends WebTestCase
 {
+
     /**
      * @var $client client
      */
-
     private $client;
 
     /**
      * @var $manager entity manager
      */
-
     private $manager;
 
     /**
      * @var $hasher password hasher
      */
-
     private $hasher;
 
     /**

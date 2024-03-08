@@ -9,16 +9,15 @@ use App\Entity\Task;
 
 class TaskControllerTest extends WebTestCase
 {
+
     /**
      * @var $client client
      */
-
     private $client;
 
     /**
      * @var $manager entity manager
      */
-
     private $manager;
 
     /**

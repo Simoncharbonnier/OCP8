@@ -9,16 +9,15 @@ use App\Entity\Task;
 
 class TaskVoterTest extends \PHPUnit\Framework\TestCase
 {
+
     /**
      * @var $voter voter
      */
-
     private $voter;
 
     /**
      * @var $lastUser last user
      */
-
     private $lastUser;
 
     /**

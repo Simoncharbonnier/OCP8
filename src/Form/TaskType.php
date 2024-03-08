@@ -12,8 +12,10 @@ class TaskType extends AbstractType
      * build form
      * @param FormBuilderInterface $builder builder
      * @param array $options options
+     *
+     * @return void
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('title')

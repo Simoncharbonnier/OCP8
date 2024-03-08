@@ -7,10 +7,10 @@ use App\Entity\Task;
 
 class UserTest extends \PHPUnit\Framework\TestCase
 {
+
     /**
      * @var $user user
      */
-
     private $user;
 
     /**

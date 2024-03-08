@@ -8,10 +8,10 @@ use App\Entity\User;
 
 class UserVoterTest extends \PHPUnit\Framework\TestCase
 {
+
     /**
      * @var $voter voter
      */
-
     private $voter;
 
     /**

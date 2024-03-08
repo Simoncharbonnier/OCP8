@@ -11,10 +11,10 @@ use App\Entity\User;
 
 class AppFixtures extends Fixture
 {
+
     /**
      * @var $hasher password hasher
      */
-
     private $hasher;
 
     /**

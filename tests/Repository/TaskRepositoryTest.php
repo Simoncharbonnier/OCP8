@@ -9,10 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class TaskRepositoryTest extends KernelTestCase
 {
+
     /**
      * @var $entityManager entity manager
      */
-
     private $entityManager;
 
     /**

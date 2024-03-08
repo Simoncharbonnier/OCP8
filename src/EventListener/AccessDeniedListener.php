@@ -14,22 +14,20 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class AccessDeniedListener implements EventSubscriberInterface
 {
+
     /**
      * @var $urlGenerator url generator
      */
-
     private $urlGenerator;
 
     /**
      * @var $security security handler
      */
-
     private $security;
 
     /**
      * @var $session session
      */
-
     private $session;
 
     /**

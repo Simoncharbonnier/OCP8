@@ -8,16 +8,15 @@ use App\Entity\User;
 
 class UserControllerTest extends WebTestCase
 {
+
     /**
      * @var $client client
      */
-
     private $client;
 
     /**
      * @var $manager entity manager
      */
-
     private $manager;
 
     /**
