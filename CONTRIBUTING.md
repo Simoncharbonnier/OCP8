@@ -14,14 +14,14 @@
 *Penser à respecter l'architecture des fichiers de Symfony 5.4, les conventions de nommage Symfony, le PSR-12 ainsi que la qualité du code.
 Lors de votre développement, si vous modifiez ou créez une ou plusieurs entités, ne pas oublier de créer une migration avec :
 
-```bash
-doctrine:migrations:diff
+```
+php bin/console doctrine:migrations:diff
 ```
 
 Que l’on peut ensuite éxécuter avec :
 
-```bash
-doctrine:migrations:migrate
+```
+php bin/console doctrine:migrations:migrate
 ```
 
 Merci d'avoir été jusque là, je prendrai soin de regarder votre pull request et de l'ajouter au projet s'il n'y a pas de soucis !
