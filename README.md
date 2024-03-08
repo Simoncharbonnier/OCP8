@@ -63,3 +63,31 @@ Pour se connecter, vous pouvez utiliser les identifiants suivants
 ```
 
 Et tout devrait fonctionner sans soucis !
+
+
+## Tests
+
+Pour utiliser les tests en local, vous devez modifier la variable d'environnement suivante dans .env.test.
+
+```bash
+DATABASE_URL="mysql://root@127.0.0.1/travis_todolist"
+```
+
+Ensuite vous pouvez créer la base de données de tests avec :
+
+```bash
+doctrine:database:create --env=test
+doctrine:schema:update --force --env=test
+```
+
+Pour lancer les tests :
+
+```bash
+vendor/bin/phpunit
+```
+
+Pour lancer les tests et vérifier le taux de couverture du code :
+
+```bash
+vendor/bin/phpunit --coverage-html public/test-coverage
+```
