@@ -7,7 +7,12 @@ use Symfony\Component\HTTPFoundation\Response;
 
 class DefaultControllerTest extends WebTestCase
 {
-    public function testHomepageIsUp()
+    /**
+     * Test homepage
+     *
+     * @return void
+     */
+    public function testHomepageIsUp(): void
     {
         $client = static::createClient();
         $client->request('GET', '/');

@@ -8,7 +8,12 @@ use App\Entity\User;
 
 class UserTypeTest extends TypeTestCase
 {
-    public function testSubmitValidData()
+    /**
+     * Test submit valid data
+     *
+     * @return void
+     */
+    public function testSubmitValidData(): void
     {
         $formData = [
             'username' => 'test',

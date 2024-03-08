@@ -9,8 +9,17 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class UserRepositoryTest extends KernelTestCase
 {
+    /**
+     * @var $entityManager entity manager
+     */
+
     private $entityManager;
 
+    /**
+     * Set up before tests
+     *
+     * @return void
+     */
     protected function setUp(): void
     {
         $kernel = self::bootKernel();
@@ -20,13 +29,23 @@ class UserRepositoryTest extends KernelTestCase
             ->getManager();
     }
 
-    public function testConstruct()
+    /**
+     * Test construct
+     *
+     * @return void
+     */
+    public function testConstruct(): void
     {
         $repo = new UserRepository($this->createMock(ManagerRegistry::class));
         $this->assertInstanceOf(UserRepository::class, $repo);
     }
 
-    public function testFindAll()
+    /**
+     * Test find all
+     *
+     * @return void
+     */
+    public function testFindAll(): void
     {
         $users = $this->entityManager
             ->getRepository(User::class)
@@ -35,6 +54,11 @@ class UserRepositoryTest extends KernelTestCase
         $this->assertContainsOnly(User::class, $users);
     }
 
+    /**
+     * Tear down after tests
+     *
+     * @return void
+     */
     protected function tearDown(): void
     {
         parent::tearDown();

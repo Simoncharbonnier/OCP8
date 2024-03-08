@@ -8,17 +8,35 @@ use App\Entity\User;
 
 class UserControllerTest extends WebTestCase
 {
+    /**
+     * @var $client client
+     */
+
     private $client;
+
+    /**
+     * @var $manager entity manager
+     */
 
     private $manager;
 
+    /**
+     * Set up before tests functions
+     *
+     * @return void
+     */
     public function setUp(): void
     {
         $this->client = static::createClient();
         $this->manager = $this->client->getContainer()->get('doctrine.orm.entity_manager');
     }
 
-    public function testListAction()
+    /**
+     * Test list action
+     *
+     * @return void
+     */
+    public function testListAction(): void
     {
         $user = $this->createUser('user', ['ROLE_USER', 'ROLE_ADMIN']);
         $this->client->loginUser($user);
@@ -29,7 +47,12 @@ class UserControllerTest extends WebTestCase
         $this->cleanDb();
     }
 
-    public function testCreateAction()
+    /**
+     * Test create action
+     *
+     * @return void
+     */
+    public function testCreateAction(): void
     {
         $user = $this->createUser('user', ['ROLE_USER', 'ROLE_ADMIN']);
         $this->client->loginUser($user);
@@ -53,7 +76,12 @@ class UserControllerTest extends WebTestCase
         $this->cleanDb();
     }
 
-    public function testEditAction()
+    /**
+     * Test edit action
+     *
+     * @return void
+     */
+    public function testEditAction(): void
     {
         $user = $this->createUser('user', ['ROLE_USER', 'ROLE_ADMIN']);
         $this->client->loginUser($user);
@@ -76,6 +104,13 @@ class UserControllerTest extends WebTestCase
         $this->cleanDb();
     }
 
+    /**
+     * Create user
+     * @param string $username username
+     * @param array $roles roles
+     *
+     * @return User
+     */
     private function createUser(string $username, array $roles = ['ROLE_USER']): User
     {
         $user = new User();
@@ -90,6 +125,11 @@ class UserControllerTest extends WebTestCase
         return $user;
     }
 
+    /**
+     * Clean db
+     *
+     * @return void
+     */
     private function cleanDb(): void
     {
         $this->manager->getConnection()->query('DELETE FROM user');

@@ -8,7 +8,12 @@ use App\Entity\Task;
 
 class TaskTypeTest extends TypeTestCase
 {
-    public function testSubmitValidData()
+    /**
+     * Test submit valid data
+     *
+     * @return void
+     */
+    public function testSubmitValidData(): void
     {
         $formData = [
             'title' => 'Titre',

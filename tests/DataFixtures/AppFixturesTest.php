@@ -11,7 +11,12 @@ use App\Entity\User;
 
 class AppFixturesTest extends KernelTestCase
 {
-    public function testLoad()
+    /**
+     * Test load
+     *
+     * @return void
+     */
+    public function testLoad(): void
     {
         $kernel = self::bootKernel();
         $manager = $kernel->getContainer()->get('doctrine')->getManager();

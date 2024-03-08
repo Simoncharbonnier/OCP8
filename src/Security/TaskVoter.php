@@ -13,6 +13,13 @@ class TaskVoter extends Voter
     const EDIT = 'edit';
     const DELETE = 'delete';
 
+    /**
+     * Supports
+     * @param string $attribute attribute
+     * @param mixed $subject subject
+     *
+     * @return bool
+     */
     protected function supports(string $attribute, mixed $subject): bool
     {
         if (!in_array($attribute, [self::ADD, self::EDIT, self::DELETE])) {
@@ -26,6 +33,14 @@ class TaskVoter extends Voter
         return true;
     }
 
+    /**
+     * Vote on attribute
+     * @param string $attribute attribute
+     * @param mixed $subject subject
+     * @param TokenInterface $token token
+     *
+     * @return bool
+     */
     protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
     {
         $user = $token->getUser();
@@ -39,11 +54,24 @@ class TaskVoter extends Voter
         return $attribute === self::ADD ? $this->canAdd($user) : $this->canEditOrDelete($task, $user);
     }
 
-    private function canAdd($user): bool
+    /**
+     * Can add
+     * @param User $user user
+     *
+     * @return bool
+     */
+    private function canAdd(User $user): bool
     {
         return in_array('ROLE_USER', $user->getRoles());
     }
 
+    /**
+     * Can edit or delete
+     * @param Task $task task
+     * @param User $user user
+     *
+     * @return bool
+     */
     private function canEditOrDelete(Task $task, User $user): bool
     {
         return $user === $task->getUser() || (in_array('ROLE_ADMIN', $user->getRoles()) && $task->getUser()->getUsername() === 'anonyme');

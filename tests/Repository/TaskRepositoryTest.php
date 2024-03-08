@@ -9,8 +9,17 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class TaskRepositoryTest extends KernelTestCase
 {
+    /**
+     * @var $entityManager entity manager
+     */
+
     private $entityManager;
 
+    /**
+     * Set up before tests
+     *
+     * @return void
+     */
     protected function setUp(): void
     {
         $kernel = self::bootKernel();
@@ -20,13 +29,23 @@ class TaskRepositoryTest extends KernelTestCase
             ->getManager();
     }
 
-    public function testConstruct()
+    /**
+     * Test construct
+     *
+     * @return void
+     */
+    public function testConstruct(): void
     {
         $repo = new TaskRepository($this->createMock(ManagerRegistry::class));
         $this->assertInstanceOf(TaskRepository::class, $repo);
     }
 
-    public function testFindAll()
+    /**
+     * Test find all
+     *
+     * @return void
+     */
+    public function testFindAll(): void
     {
         $tasks = $this->entityManager
             ->getRepository(Task::class)
@@ -35,6 +54,11 @@ class TaskRepositoryTest extends KernelTestCase
         $this->assertContainsOnly(Task::class, $tasks);
     }
 
+    /**
+     * Tear down after tests
+     *
+     * @return void
+     */
     protected function tearDown(): void
     {
         parent::tearDown();

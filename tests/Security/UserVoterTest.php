@@ -8,8 +8,17 @@ use App\Entity\User;
 
 class UserVoterTest extends \PHPUnit\Framework\TestCase
 {
+    /**
+     * @var $voter voter
+     */
+
     private $voter;
 
+    /**
+     * Set up before tests
+     *
+     * @return void
+     */
     public function setUp(): void
     {
         $this->voter = new UserVoter();
@@ -17,8 +26,15 @@ class UserVoterTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @dataProvider provideCases
+     * Test vote
+     * @param string $attribute attribute
+     * @param ?User $userSubject user subject
+     * @param ?User $user user
+     * @param $expected expected result
+     *
+     * @return void
      */
-    public function testVote(string $attribute, ?User $userSubject, ?User $user, $expected)
+    public function testVote(string $attribute, ?User $userSubject, ?User $user, $expected): void
     {
         $token = $this->createMock(TokenInterface::class);
         if ($user) {
@@ -30,7 +46,12 @@ class UserVoterTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($expected, $this->voter->vote($token, $userSubject, [$attribute]));
     }
 
-    public function provideCases()
+    /**
+     * Provide cases
+     *
+     * @return array
+     */
+    public function provideCases(): array
     {
         return [
             [
@@ -102,6 +123,13 @@ class UserVoterTest extends \PHPUnit\Framework\TestCase
         ];
     }
 
+    /**
+     * Create user
+     * @param string $username username
+     * @param array $roles roles
+     *
+     * @return User
+     */
     private function createUser(string $username, array $roles = ['ROLE_USER']): User
     {
         $user = new User();

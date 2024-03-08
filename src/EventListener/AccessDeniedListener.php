@@ -14,10 +14,30 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class AccessDeniedListener implements EventSubscriberInterface
 {
+    /**
+     * @var $urlGenerator url generator
+     */
+
     private $urlGenerator;
+
+    /**
+     * @var $security security handler
+     */
+
     private $security;
+
+    /**
+     * @var $session session
+     */
+
     private $session;
 
+    /**
+     * Construct
+     * @param UrlGeneratorInterface $urlGenerator url generator
+     * @param Security $security security handler
+     * @param RequestStack $request request to get session
+     */
     public function __construct(UrlGeneratorInterface $urlGenerator, Security $security, RequestStack $request)
     {
         $this->urlGenerator = $urlGenerator;
@@ -25,6 +45,11 @@ class AccessDeniedListener implements EventSubscriberInterface
         $this->session = $request->getSession();
     }
 
+    /**
+     * Get subscribed events
+     *
+     * @return array
+     */
     public static function getSubscribedEvents(): array
     {
         return [
@@ -32,6 +57,12 @@ class AccessDeniedListener implements EventSubscriberInterface
         ];
     }
 
+    /**
+     * On Kernel Exception
+     * @param ExceptionEvent $event event exception
+     *
+     * @return void;
+     */
     public function onKernelException(ExceptionEvent $event): void
     {
         $exception = $event->getThrowable();

@@ -16,92 +16,157 @@ class Task
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
+
     private $id;
 
     /**
      * @ORM\Column(type="datetime")
      */
+
     private $createdAt;
 
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank(message="Vous devez saisir un titre.")
      */
+
     private $title;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Vous devez saisir du contenu.")
      */
+
     private $content;
 
     /**
      * @ORM\Column(type="boolean")
      */
+
     private $isDone;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="tasks")
      * @ORM\JoinColumn(nullable=false)
      */
+
     private $user;
 
+    /**
+     * Construct
+     */
     public function __construct()
     {
         $this->createdAt = new \Datetime();
         $this->isDone = false;
     }
 
-    public function getId()
+    /**
+     * Get id
+     *
+     * @return ?int
+     */
+    public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * Get created_at
+     */
     public function getCreatedAt()
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt($createdAt)
+    /**
+     * Set created_at
+     * @param $createdAt created at
+     *
+     * @return void
+     */
+    public function setCreatedAt($createdAt): void
     {
         $this->createdAt = $createdAt;
     }
 
-    public function getTitle()
+    /**
+     * Get title
+     *
+     * @return ?string
+     */
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function setTitle($title)
+    /**
+     * Set title
+     * @param $title title
+     *
+     * @return void
+     */
+    public function setTitle($title): void
     {
         $this->title = $title;
     }
 
-    public function getContent()
+    /**
+     * Get content
+     *
+     * @return ?string
+     */
+    public function getContent(): ?string
     {
         return $this->content;
     }
 
-    public function setContent($content)
+    /**
+     * Set content
+     * @param $content content
+     *
+     * @return void
+     */
+    public function setContent($content): void
     {
         $this->content = $content;
     }
 
+    /**
+     * Get isDone
+     */
     public function isDone()
     {
         return $this->isDone;
     }
 
-    public function toggle($flag)
+    /**
+     * Set isDone
+     * @param $flag flag
+     *
+     * @return void
+     */
+    public function toggle($flag): void
     {
         $this->isDone = $flag;
     }
 
+    /**
+     * Get user
+     *
+     * @return ?User
+     */
     public function getUser(): ?User
     {
         return $this->user;
     }
 
+    /**
+     * Set user
+     * @param ?User $user user
+     *
+     * @return self
+     */
     public function setUser(?User $user): self
     {
         $this->user = $user;

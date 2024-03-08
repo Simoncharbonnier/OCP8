@@ -8,12 +8,29 @@ use App\Entity\User;
 
 class SecurityControllerTest extends WebTestCase
 {
+    /**
+     * @var $client client
+     */
+
     private $client;
+
+    /**
+     * @var $manager entity manager
+     */
 
     private $manager;
 
+    /**
+     * @var $hasher password hasher
+     */
+
     private $hasher;
 
+    /**
+     * Set up before tests functions
+     *
+     * @return void
+     */
     public function setUp(): void
     {
         $this->client = static::createClient();
@@ -23,14 +40,20 @@ class SecurityControllerTest extends WebTestCase
 
     /**
      * @dataProvider provideCases
+     * Test login
+     * @param $createUser create user or not
+     * @param $password password
+     * @param $expectedLogin expected login or not
+     *
+     * @return void
      */
-    public function testLogin($createUser, $password, $expectedLogin)
+    public function testLogin($createUser, $password, $expectedLogin): void
     {
         if ($createUser) {
             $user = $this->createUser('user');
         }
-        $crawler = $this->client->request('GET', '/login');
 
+        $crawler = $this->client->request('GET', '/login');
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
 
         $form = $crawler->selectButton('Se connecter')->form();
@@ -50,6 +73,13 @@ class SecurityControllerTest extends WebTestCase
         $this->cleanDb();
     }
 
+    /**
+     * Create user
+     * @param string $username username
+     * @param array $roles roles
+     *
+     * @return User
+     */
     private function createUser(string $username, array $roles = ['ROLE_USER']): User
     {
         $user = new User();
@@ -64,12 +94,22 @@ class SecurityControllerTest extends WebTestCase
         return $user;
     }
 
+    /**
+     * Clean db
+     *
+     * @return void
+     */
     private function cleanDb(): void
     {
         $this->manager->getConnection()->query('DELETE FROM user');
     }
 
-    public function provideCases()
+    /**
+     * Provide cases
+     *
+     * @return array
+     */
+    public function provideCases(): array
     {
         return [
             [

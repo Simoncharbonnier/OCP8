@@ -9,10 +9,23 @@ use App\Entity\Task;
 
 class TaskVoterTest extends \PHPUnit\Framework\TestCase
 {
+    /**
+     * @var $voter voter
+     */
+
     private $voter;
+
+    /**
+     * @var $lastUser last user
+     */
 
     private $lastUser;
 
+    /**
+     * Set up before tests
+     *
+     * @return void
+     */
     public function setUp(): void
     {
         $this->voter = new TaskVoter();
@@ -21,8 +34,15 @@ class TaskVoterTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @dataProvider provideCases
+     * Test vote
+     * @param string $attribute attribute
+     * @param ?Task $task task
+     * @param ?User $user user
+     * @param $expected expected result
+     *
+     * @return void
      */
-    public function testVote(string $attribute, ?Task $task, ?User $user, $expected)
+    public function testVote(string $attribute, ?Task $task, ?User $user, $expected): void
     {
         $token = $this->createMock(TokenInterface::class);
         if ($user) {
@@ -34,7 +54,12 @@ class TaskVoterTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($expected, $this->voter->vote($token, $task, [$attribute]));
     }
 
-    public function provideCases()
+    /**
+     * Provide cases
+     *
+     * @return array
+     */
+    public function provideCases(): array
     {
         return [
             [
@@ -124,6 +149,13 @@ class TaskVoterTest extends \PHPUnit\Framework\TestCase
         ];
     }
 
+    /**
+     * Create user
+     * @param string $username username
+     * @param array $roles roles
+     *
+     * @return User
+     */
     private function createUser(string $username, array $roles = ['ROLE_USER']): User
     {
         $user = new User();
@@ -135,6 +167,12 @@ class TaskVoterTest extends \PHPUnit\Framework\TestCase
         return $user;
     }
 
+    /**
+     * Create Task
+     * @param User $user user
+     *
+     * @return Task
+     */
     private function createTask(User $user): Task
     {
         $task = new Task();

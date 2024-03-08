@@ -7,19 +7,38 @@ use App\Entity\Task;
 
 class UserTest extends \PHPUnit\Framework\TestCase
 {
+    /**
+     * @var $user user
+     */
+
     private $user;
 
+    /**
+     * Set up before tests
+     *
+     * @return void
+     */
     public function setUp(): void
     {
         $this->user = new User();
     }
 
-    public function testId()
+    /**
+     * Test id
+     *
+     * @return void
+     */
+    public function testId(): void
     {
         $this->assertNull($this->user->getId());
     }
 
-    public function testUsername()
+    /**
+     * Test username
+     *
+     * @return void
+     */
+    public function testUsername(): void
     {
         $this->assertNull($this->user->getUsername());
 
@@ -27,7 +46,12 @@ class UserTest extends \PHPUnit\Framework\TestCase
         $this->assertSame('simon', $this->user->getUsername());
     }
 
-    public function testPassword()
+    /**
+     * Test password
+     *
+     * @return void
+     */
+    public function testPassword(): void
     {
         $this->assertNull($this->user->getPassword());
 
@@ -35,7 +59,12 @@ class UserTest extends \PHPUnit\Framework\TestCase
         $this->assertSame('secret', $this->user->getPassword());
     }
 
-    public function testEmail()
+    /**
+     * Test email
+     *
+     * @return void
+     */
+    public function testEmail(): void
     {
         $this->assertNull($this->user->getEmail());
 
@@ -43,7 +72,12 @@ class UserTest extends \PHPUnit\Framework\TestCase
         $this->assertSame('simon.charbonnier@gmail.com', $this->user->getEmail());
     }
 
-    public function testTasks()
+    /**
+     * Test tasks
+     *
+     * @return void
+     */
+    public function testTasks(): void
     {
         $this->assertEmpty($this->user->getTasks());
 
@@ -55,7 +89,12 @@ class UserTest extends \PHPUnit\Framework\TestCase
         $this->assertEmpty($this->user->getTasks());
     }
 
-    public function testRoles()
+    /**
+     * Test roles
+     *
+     * @return void
+     */
+    public function testRoles(): void
     {
         $this->assertSame(['ROLE_USER'], $this->user->getRoles());
 
@@ -63,17 +102,32 @@ class UserTest extends \PHPUnit\Framework\TestCase
         $this->assertSame(['ROLE_ADMIN', 'ROLE_USER'], $this->user->getRoles());
     }
 
-    public function testSalt()
+    /**
+     * Test salt
+     *
+     * @return void
+     */
+    public function testSalt(): void
     {
         $this->assertNull($this->user->getSalt());
     }
 
-    public function testEraseCredential()
+    /**
+     * Test erase credentials
+     *
+     * @return void
+     */
+    public function testEraseCredentials(): void
     {
         $this->assertNull($this->user->eraseCredentials());
     }
 
-    public function testUserIdentifier()
+    /**
+     * Test user identifier
+     *
+     * @return void
+     */
+    public function testUserIdentifier(): void
     {
         $this->user->setUsername('simon');
         $this->assertSame('simon', $this->user->getUserIdentifier());

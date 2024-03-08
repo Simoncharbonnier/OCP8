@@ -19,8 +19,14 @@ class AccessDeniedListenerTest extends KernelTestCase
 {
     /**
      * @dataProvider provideCases
+     * Test on Kernel exception
+     * @param $event event
+     * @param $isGranted is granted
+     * @param $expected expected result
+     *
+     * @return void
      */
-    public function testOnKernelException($event, $isGranted, $expected)
+    public function testOnKernelException($event, $isGranted, $expected): void
     {
         $kernel = self::bootKernel();
 
@@ -53,7 +59,12 @@ class AccessDeniedListenerTest extends KernelTestCase
         }
     }
 
-    public function provideCases()
+    /**
+     * Provide cases
+     *
+     * @return array
+     */
+    public function provideCases(): array
     {
         return [
             [
