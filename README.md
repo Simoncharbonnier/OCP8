@@ -1,5 +1,7 @@
 # To do list
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/816e015e63b24345a45113b82d32ce39)](https://app.codacy.com/gh/Simoncharbonnier/OCP8/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 Ce projet est réalisé dans le cadre de la formation de développeur d'application PHP/Symfony chez OpenClassrooms.
 
 La mission est d'améliorer la qualité de l'application de "ToDo & Co" (corrections d'anomalies, implémentation de nouvelles fonctionnalités, de tests automatisés).
